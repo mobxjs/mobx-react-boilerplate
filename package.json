@@ -1,32 +1,28 @@
 {
-  "name": "react-hot-boilerplate",
+  "name": "react-mobservable-boilerplate",
   "version": "1.0.0",
-  "description": "Boilerplate for ReactJS project with hot code reloading",
+  "description": "Boilerplate for ReactJS + mobservable project with JSX, ES6 compilation and hot code reloading",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaearon/react-hot-boilerplate.git"
+    "url": "https://github.com/mweststrate/react-mobservable-boilerplate.git"
   },
   "keywords": [
     "react",
     "reactjs",
     "boilerplate",
-    "hot",
-    "reload",
-    "hmr",
-    "live",
-    "edit",
-    "webpack"
+    "mobservable",
+    "starter-kit"
   ],
-  "author": "Dan Abramov <dan.abramov@me.com> (http://github.com/gaearon)",
+  "author": "Michel Weststrate <mweststrate@gmail.com> (http://github.com/mweststrate)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gaearon/react-hot-boilerplate/issues"
+    "url": "https://github.com/mweststrate/react-mobservable-boilerplate/issues"
   },
-  "homepage": "https://github.com/gaearon/react-hot-boilerplate",
+  "homepage": "http://mweststrate.github.com/mobservable",
   "devDependencies": {
     "babel-core": "^5.4.7",
     "babel-eslint": "^3.1.9",
@@ -37,6 +33,7 @@
     "webpack-dev-server": "^1.8.2"
   },
   "dependencies": {
+    "mobservable": "^0.5.7",
     "react": "^0.13.0"
   }
 }
