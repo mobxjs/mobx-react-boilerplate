@@ -17,5 +17,5 @@ The file `src/components.js` defines the `TodoList` and `TodoView` components. A
 
 ### Credits
 
-* This template is based on [react-mobservable-boilerplate](https://github.com/gaearon/react-hot-boilerplate) by Dan Abramov.
+* This template is based on [react-hot-boilerplate](https://github.com/gaearon/react-hot-boilerplate) by Dan Abramov.
 * [Mendix](http://github.com/mendix) for providing the opportunity to battle test this approach (we're hiring!).
