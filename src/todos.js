@@ -25,3 +25,16 @@ export function addTodo(title) {
 export function removeTodo(todo) {
 	todos.splice(todos.indexOf(todo), 1);
 }
+
+/** How to do something async: */
+mobservable.props(todos, { isLoading: false });
+
+export function loadTodosAsync() {
+	todos.isLoading = true;
+	// mimic something asynchronous
+	setTimeout(function() {
+		addTodo("Asynchronously created todo");
+		addTodo("Another asynchronously created todo");
+		todos.isLoading = false;
+	}, 2000);
+}

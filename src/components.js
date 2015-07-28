@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addTodo, removeTodo } from './todos';
+import { addTodo, removeTodo, loadTodosAsync } from './todos';
 import { ObservingComponent } from 'mobservable'
 
 // React component that responds to changes in 'todos'
@@ -9,10 +9,12 @@ import { ObservingComponent } from 'mobservable'
 		return (<div>
 			<ul>
 				 {this.props.todos.map((todo,idx) => (<TodoView todo={todo} key={idx} />))}
+				 {todos.isLoading ? (<li>Loading more items...</li>) : null }
 			</ul>
 			<hr/>
-			Completed {todos.filter(todo => todo.completed).length} of {todos.length} items.
-			<br/><button onClick={this.onNewTodo.bind(this)}>New Todo</button>
+			Completed {todos.filter(todo => todo.completed).length} of {todos.length} items.<br/>
+			<button onClick={this.onNewTodo.bind(this)}>New Todo</button>
+			<button onClick={loadTodosAsync}>Load more...</button>
 		</div>);
 	}
 
