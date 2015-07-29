@@ -27,14 +27,14 @@ export function removeTodo(todo) {
 }
 
 /** How to do something async: */
-mobservable.props(todos, { isLoading: false });
+mobservable.props(todos, { isLoading: 0 });
 
 export function loadTodosAsync() {
-	todos.isLoading = true;
+	todos.isLoading++;
 	// mimic something asynchronous
 	setTimeout(function() {
 		addTodo("Asynchronously created todo");
 		addTodo("Another asynchronously created todo");
-		todos.isLoading = false;
+		todos.isLoading--;
 	}, 2000);
 }
