@@ -39,11 +39,13 @@ import { ObservingComponent } from 'mobservable'
 		this.props.todo.completed = !this.props.todo.completed;
 	}
 
-	onEdit() {
+	onEdit(e) {
+		e.preventDefault();
 		this.props.todo.title = prompt('Todo:', this.props.todo.title);
 	}
 
-	onRemove() {
+	onRemove(e) {
+		e.preventDefault();
 		removeTodo(this.props.todo);
 	}
 }
