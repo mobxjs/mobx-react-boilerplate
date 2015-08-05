@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { addTodo, removeTodo, loadTodosAsync } from './todos';
-import { ObservingComponent } from 'mobservable'
+import { reactiveComponent } from 'mobservable'
 
 // React component that responds to changes in 'todos'
-@ObservingComponent export class TodoList extends Component {
+@reactiveComponent export class TodoList extends Component {
 	render() {
 		const todos = this.props.todos;
 		return (<div>
@@ -24,7 +24,7 @@ import { ObservingComponent } from 'mobservable'
 }
 
 // React component that responds to changes in its 'todo'
-@ObservingComponent class TodoView extends Component {
+@reactiveComponent class TodoView extends Component {
 	render() {
 		const todo = this.props.todo;
 		return (<li>

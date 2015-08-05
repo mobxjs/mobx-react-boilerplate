@@ -1,7 +1,7 @@
 import mobservable from 'mobservable';
 
 // Create a reactive data structure
-export var todos = mobservable.fromJson([]);
+export var todos = mobservable.makeReactive([]);
 
 // The following function will automatically be executed whenever 'todos' changes
 mobservable.sideEffect(() => {
@@ -16,10 +16,10 @@ todos[0].completed = true;
 // Prints: 'Completed 1 of 2 todo items'
 
 export function addTodo(title) {
-	todos.push(mobservable.fromJson({
+	todos.push({
 		title: title,
 		completed: false
-	}));
+	});
 }
 
 export function removeTodo(todo) {
@@ -27,7 +27,7 @@ export function removeTodo(todo) {
 }
 
 /** How to do something async: */
-mobservable.props(todos, { isLoading: 0 });
+mobservable.defineReactiveProperties(todos, { isLoading: 0 });
 
 export function loadTodosAsync() {
 	todos.isLoading++;
