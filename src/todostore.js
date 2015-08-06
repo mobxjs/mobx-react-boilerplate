@@ -1,19 +1,19 @@
-var mobservable = require('mobservable');
+import {makeReactive} from 'mobservable';
 
 // Create a reactive data structure
-var todoStore = mobservable.makeReactive({
+var todoStore = makeReactive({
 	todos: [
 		{
-			title: "Find a clean mug",
+			title: 'Find a clean mug',
 			completed: true
 		},
 		{
-			title: "Make coffee",
+			title: 'Make coffee',
 			completed: false
 		}
 	],
 	completedCount: function() {
-		return this.todos.filter(function(todo) { return todo.completed }).length;
+		return this.todos.filter((todo) => todo.completed).length;
 	},
 	pending: 0
 });
@@ -23,19 +23,19 @@ todoStore.addTodo = function(title) {
 		title: title,
 		completed: false
 	});
-}
+};
 
 todoStore.removeTodo = function(todo) {
 	this.todos.splice(this.todos.indexOf(todo), 1);
-}
+};
 
 todoStore.loadTodosAsync = function() {
 	this.pending++;
 	// mimic something asynchronous
 	setTimeout(function() {
-		this.addTodo("Asynchronously created todo");
+		this.addTodo('Asynchronously created todo');
 		this.pending--;
 	}.bind(this), 2000);
-}
+};
 
-module.exports = todoStore;
+export default todoStore;
