@@ -1,5 +1,5 @@
-import React from 'react';
-import { todos } from './todos';
-import { TodoList } from './components'
+var React = require('react');
+var todoStore = require('./todostore');
+var TodoList = require('./components').TodoList;
 
-React.render(<TodoList todos={todos} />, document.getElementById('approot'));
+React.render(<TodoList store={todoStore} />, document.getElementById('approot'));

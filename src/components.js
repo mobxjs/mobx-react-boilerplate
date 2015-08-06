@@ -1,51 +1,56 @@
-import React, { Component } from 'react';
-import { addTodo, removeTodo, loadTodosAsync } from './todos';
-import { reactiveComponent } from 'mobservable'
+var React = require('react');
+var reactiveComponent = require('mobservable').reactiveComponent;
 
 // React component that responds to changes in 'todos'
-@reactiveComponent export class TodoList extends Component {
-	render() {
-		const todos = this.props.todos;
+exports.TodoList = reactiveComponent(React.createClass({
+	displayName : "TodoList",
+
+	render : function() {
+		var store = this.props.store;
 		return (<div>
 			<ul>
-				 {this.props.todos.map((todo,idx) => (<TodoView todo={todo} key={idx} />))}
-				 {todos.isLoading ? (<li>Loading more items...</li>) : null }
+				{ store.todos.map(function(todo,idx) {
+		  			return (<TodoView store={ store } todo={ todo } key={ idx } />)
+				}) }
+				{ store.pending ? (<li>Loading more items...</li>) : null }
 			</ul>
 			<hr/>
-			Completed {todos.filter(todo => todo.completed).length} of {todos.length} items.<br/>
-			<button onClick={this.onNewTodo.bind(this)}>New Todo</button>
-			<button onClick={loadTodosAsync}>Load more...</button>
+			Completed { store.completedCount } of { store.todos.length } items.<br/>
+			<button onClick={ this.onNewTodo }>New Todo</button>
+			<button onClick={ store.loadTodosAsync.bind(store) }>Load more...</button>
 		</div>);
-	}
+	},
 
-	onNewTodo() {
-		addTodo(prompt("Enter a new todo:", "Try mobservable at home!"))
+	onNewTodo : function() {
+		this.props.store.addTodo(prompt("Enter a new todo:", "Try mobservable at home!"));
 	}
-}
+}));
 
 // React component that responds to changes in its 'todo'
-@reactiveComponent class TodoView extends Component {
-	render() {
-		const todo = this.props.todo;
+var TodoView = reactiveComponent(React.createClass({
+	displayName : "TodoView",
+
+	render : function() {
+		var todo = this.props.todo;
 		return (<li>
-			<input type="checkbox" checked={todo.completed} onChange={this.onToggleCompleted.bind(this)} />
+			<input type="checkbox" checked={ todo.completed } onChange={ this.onToggleCompleted } />
 			{todo.title}{" "}
-			<a href="#" onClick={this.onEdit.bind(this)}>[edit]</a>
-			<a href="#" onClick={this.onRemove.bind(this)}>[remove]</a>
+			<a href="#" onClick={ this.onEdit }>[edit]</a>
+			<a href="#" onClick={ this.onRemove }>[remove]</a>
 		</li>);
-	}
+	},
 
-	onToggleCompleted() {
+	onToggleCompleted : function() {
 		this.props.todo.completed = !this.props.todo.completed;
-	}
+	},
 
-	onEdit(e) {
+	onEdit : function(e) {
 		e.preventDefault();
 		this.props.todo.title = prompt('Todo:', this.props.todo.title);
-	}
+	},
 
-	onRemove(e) {
+	onRemove : function(e) {
 		e.preventDefault();
-		removeTodo(this.props.todo);
+		this.props.store.removeTodo(this.props.todo);
 	}
-}
+}));
