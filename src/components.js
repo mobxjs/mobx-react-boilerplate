@@ -1,5 +1,5 @@
 import React from 'react';
-import {reactiveComponent} from 'mobservable';
+import {reactiveComponent} from 'mobservable-react';
 
 // React component that responds to changes in 'todos'
 export var TodoList = reactiveComponent(React.createClass({
@@ -8,6 +8,7 @@ export var TodoList = reactiveComponent(React.createClass({
 	render: function() {
 		var store = this.props.store;
 		return (<div>
+			<h1>Yet another list of things I should do:</h1>
 			<ul>
 				{ store.todos.map((todo, idx) =>
 					(<TodoView store={ store } todo={ todo } key={ idx } />)

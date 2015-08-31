@@ -33,7 +33,9 @@
     "webpack-dev-server": "^1.8.2"
   },
   "dependencies": {
-    "mobservable": "^0.6.0",
+    "mobservable": "^0.6.3",
+    "mobservable-react": "^0.1.1",
+    "mobservable-react-devtools": "^0.1.0",
     "react": "^0.13.0"
   }
 }
