@@ -1,11 +1,11 @@
 import React from 'react';
-import {makeReactive} from 'mobservable';
-import {reactiveComponent} from 'mobservable-react';
+import {observable} from 'mobservable';
+import {observer} from 'mobservable-react';
 
 // uncomment next line to enable the dev-tools.
 // import 'mobservable-react-devtools';
 
-var appState = makeReactive({
+var appState = observable({
     timer: 0
 });
 
@@ -17,7 +17,7 @@ setInterval(function() {
     appState.timer += 1;
 }, 1000);
         
-var TimerView = reactiveComponent(React.createClass({
+var TimerView = observer(React.createClass({
      render: function() {
         return (<button onClick={this.onReset}>
         	Seconds passed: {this.props.appState.timer}
