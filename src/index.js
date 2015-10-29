@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import {observable} from 'mobservable';
 import {observer} from 'mobservable-react';
 
 // uncomment next line to enable the dev-tools.
-// import 'mobservable-react-devtools';
+import 'mobservable-react-devtools';
 
-var appState = observable({
+const appState = observable({
     timer: 0
 });
 
@@ -13,20 +14,23 @@ appState.resetTimer = function() {
     appState.timer = 0;
 };
 
-setInterval(function() {
+setInterval(() => {
     appState.timer += 1;
 }, 1000);
-        
-var TimerView = observer(React.createClass({
-     render: function() {
-        return (<button onClick={this.onReset}>
-        	Seconds passed: {this.props.appState.timer}
-            </button>);
-     },
-     
-     onReset: function() {
+
+@observer
+class TimerView extends Component {
+     render() {
+        return (
+            <button onClick={this.onReset}>
+                Seconds passed: {this.props.appState.timer}
+            </button>
+        );
+     }
+
+     onReset = () => {
      	this.props.appState.resetTimer();
      }
-}));
+};
 
-React.render(<TimerView appState={appState} />, document.body);
+ReactDOM.render(<TimerView appState={appState} />, document.getElementById('root'));
