@@ -1,28 +1,28 @@
 {
-  "name": "mobservable-react-boilerplate",
+  "name": "mobx-react-boilerplate",
   "version": "1.0.0",
-  "description": "Boilerplate for Mobservable + React project with JSX, ES6 compilation and hot code reloading",
+  "description": "Boilerplate for MobX + React project with JSX, ES6 compilation and hot code reloading",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mweststrate/mobservable-react-boilerplate.git"
+    "url": "https://github.com/mobxjs/mobx-react-boilerplate.git"
   },
   "keywords": [
     "react",
     "reactjs",
     "boilerplate",
-    "mobservable",
+    "mobx",
     "starter-kit"
   ],
   "author": "Michel Weststrate <mweststrate@gmail.com> (http://github.com/mweststrate)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mweststrate/mobservable/issues"
+    "url": "https://github.com/mobxjs/mobx/issues"
   },
-  "homepage": "http://mweststrate.github.com/mobservable",
+  "homepage": "http://mobxjs.github.com/mobx",
   "devDependencies": {
     "babel-core": "^6.3.26",
     "babel-loader": "^6.2.0",
@@ -31,14 +31,14 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-1": "^6.3.13",
     "eslint-plugin-react": "^2.3.0",
-    "mobservable-react-devtools": "^2.0.1",
     "react-hot-loader": "^1.2.7",
     "webpack": "^1.9.6",
     "webpack-dev-server": "^1.8.2"
   },
   "dependencies": {
-    "mobservable": "^1.0.0",
-    "mobservable-react": "^2.0.0",
+    "mobx": "^2.0.0",
+    "mobx-react": "^3.0.0",
+    "mobx-react-devtools": "^4.0.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0"
   }
