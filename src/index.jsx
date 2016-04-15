@@ -22,8 +22,13 @@ class TimerStore {
 
 @observer
 class Timer extends Component {
+  constructor(props) {
+    super(props)
+    this.store = new TimerStore(props.secondsElapsed)
+  }
+
   render() {
-    const { secondsElapsed, reset } = this.props.store
+    const { secondsElapsed, reset } = this.store
     return (
       <div>
         <button onClick={reset}>
@@ -35,8 +40,7 @@ class Timer extends Component {
   }
 
   componentDidMount = () => {
-    const { tick } = this.props.store
-    this.interval = setInterval(tick, 1000);
+    this.interval = setInterval(this.store.tick, 1000);
   }
 
   componentWillUnmount = () => {
@@ -44,14 +48,12 @@ class Timer extends Component {
   }
 
   static propTypes = {
-    store: PropTypes.shape({
-      secondsElapsed: PropTypes.number.isRequired,
-      tick: PropTypes.func.isRequired,
-      reset: PropTypes.func.isRequired
-    }).isRequired
+    secondsElapsed: PropTypes.number
+  }
+
+  static defualtProps = {
+    secondsElapsed: 0
   }
 };
 
-const timerStore = new TimerStore()
-
-render(<Timer store={timerStore} />, document.getElementById('root'));
+render(<Timer secondsElapsed={10} />, document.getElementById('root'));
