@@ -31,6 +31,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
     "eslint-plugin-react": "^5.1.1",
+    "react-hot-loader": "^3.0.0-beta.2",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },

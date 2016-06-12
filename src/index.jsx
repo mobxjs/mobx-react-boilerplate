@@ -1,39 +1,27 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import {observable} from 'mobx';
-import {observer} from 'mobx-react';
-import DevTools from 'mobx-react-devtools';
+import React from 'react';
+import { render } from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
+import AppState from './AppState';
+import App from './App';
 
-const appState =  new class AppState {
-    @observable timer = 0;
-    
-    constructor() {
-        setInterval(() => {
-            appState.timer += 1;
-        }, 1000);
-    }
-    
-    resetTimer() {
-        this.timer = 0;
-    }
-}();
+const appState = new AppState();
 
-@observer
-class TimerView extends Component {
-     render() {
-        return (
-            <div>
-                <button onClick={this.onReset}>
-                    Seconds passed: {this.props.appState.timer}
-                </button>
-                <DevTools />
-            </div>
-        );
-     }
+render(
+  <AppContainer>
+    <App appState={appState} />
+  </AppContainer>,
+  document.getElementById('root')
+);
 
-     onReset = () => {
-     	this.props.appState.resetTimer();
-     }
-};
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    const NextApp = require('./App').default;
 
-ReactDOM.render(<TimerView appState={appState} />, document.getElementById('root'));
+    render(
+      <AppContainer>
+        <NextApp appState={appState} />
+      </AppContainer>,
+      document.getElementById('root')
+    );
+  });
+}
