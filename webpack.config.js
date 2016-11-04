@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var APP = 'src';
 
 module.exports = {
   devtool: 'eval',
@@ -7,7 +8,7 @@ module.exports = {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './src/index'
+    './' + APP + '/index'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -24,7 +25,7 @@ module.exports = {
     loaders: [{
       test: /\.jsx?$/,
       loaders: ['babel'],
-      include: path.join(__dirname, 'src')
+      include: path.join(__dirname, APP)
     }]
   }
 };
