@@ -1,9 +1,9 @@
 {
   "name": "mobx-react-boilerplate",
   "version": "1.0.0",
-  "description": "Boilerplate for MobX + React project with JSX, ES6 compilation and hot code reloading",
+  "description": "Boilerplate for MobX + React project with JSX, ES6 and decorator compilation",
   "scripts": {
-    "start": "node server.js",
+    "start": "webpack-dev-server --hot --open",
     "lint": "eslint src"
   },
   "repository": {
@@ -25,15 +25,11 @@
   "homepage": "http://mobxjs.github.com/mobx",
   "devDependencies": {
     "babel-core": "^6.9.1",
-    "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
-    "eslint": "^4.5.0",
-    "eslint-plugin-react": "^7.3.0",
-    "react-hot-loader": "^3.0.0-beta.2",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
   },
