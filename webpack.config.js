@@ -3,6 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
   devtool: 'eval',
+  mode: 'development',
   entry: [
     './src/index'
   ],
