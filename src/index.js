@@ -4,7 +4,6 @@ import DevTools from "mobx-react-devtools";
 
 import TodoList from "./components/TodoList";
 import TodoListModel from "./models/TodoListModel";
-import TodoModel from "./models/TodoModel";
 
 const store = new TodoListModel();
 
